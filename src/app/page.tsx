@@ -19,42 +19,6 @@ const generateRouteTemplate = (): BusRoute => {
   }
 }
 
-const routeList: BusRoute[] = [
-  {
-    id: "f91509bf-a977-45aa-8fa3-a36659a1eae3",
-    name: "Bangalore to Chennai",
-    stops: [
-      { name: "Bangalore", latitude: 12.9716, longitude: 77.5946 },
-      { name: "Vellore", latitude: 12.9165, longitude: 79.1325 },
-      { name: "Chennai", latitude: 13.0827, longitude: 80.2707 },
-    ],
-    direction: "UP",
-    status: "Active",
-  },
-  {
-    id: "fc1b4a82-c5cd-43bb-a463-c382b95d1eb5",
-    name: "Mumbai to Pune",
-    stops: [
-      { name: "Mumbai", latitude: 19.076, longitude: 72.8777 },
-      { name: "Lonavala", latitude: 18.7501, longitude: 73.4072 },
-      { name: "Pune", latitude: 18.5204, longitude: 73.8567 },
-    ],
-    direction: "UP",
-    status: "Active",
-  },
-  {
-    id: "b52aa27d-b137-4971-beea-07b4cd545097",
-    name: "Delhi to Agra",
-    stops: [
-      { name: "Delhi", latitude: 28.6139, longitude: 77.209 },
-      { name: "Faridabad", latitude: 28.4089, longitude: 77.3178 },
-      { name: "Mathura", latitude: 27.4924, longitude: 77.6737 },
-      { name: "Agra", latitude: 27.1767, longitude: 78.0081 },
-    ],
-    status: "Active",
-    direction: "UP",
-  },
-];
 
 const Home = () => {
   const [routes, setRoutes] = useState<BusRoute[]>([]);
@@ -63,8 +27,8 @@ const Home = () => {
   const [createRoute, setCreateRoute] = useState<boolean>(true);
 
   useEffect(() => {
-    let str1 = localStorage.getItem("routes");
-    let str2 = localStorage.getItem("route");
+    const str1 = localStorage.getItem("routes");
+    const str2 = localStorage.getItem("route");
     let list;
     let rt;
     if(str1) {
@@ -99,7 +63,7 @@ const Home = () => {
 
   const createNewRoute = () => {
     setCreateRoute(true);
-    let newRoute = generateRouteTemplate();
+    const newRoute = generateRouteTemplate();
     newRoute.id = uuidv4();
     setCurrentRoute(newRoute);
   };
